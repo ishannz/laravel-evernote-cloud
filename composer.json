@@ -1,6 +1,6 @@
 {
-    "name": "ishannz/laravel-evernote",
-    "description": "larave evernote integration",
+    "name": "ishannz/laravel-evernote-cloud",
+    "description": "Laravel wrapper for Evernote Cloud",
     "authors": [
         {
             "name": "ishanjayamanne",
