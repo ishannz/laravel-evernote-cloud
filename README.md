@@ -18,6 +18,7 @@ or
 Require this package with composer:
 ```
 composer require ishannz/laravel-evernote-cloud
+```
 Update your `composer.json` file to include this package as a dependency
 
 Update your packages with ```composer update``` or install with ```composer install```.
