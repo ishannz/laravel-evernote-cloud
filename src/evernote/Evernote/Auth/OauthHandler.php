@@ -73,7 +73,7 @@ class OauthHandler
             throw new AuthorizationDeniedException('Authorization declined.');
         //the user authorized the app
         } else {
-            session_start();
+            //session_start();
             $this->token_secret = $_SESSION['oauth_token_secret'];
 
             $this->params['oauth_token']    = $_GET['oauth_token'];

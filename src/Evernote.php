@@ -28,11 +28,11 @@ class Evernote
     public function __construct($token = null)
     {
         $this->token = $token;
-        $this->sandbox = (env('LE_SANDBOX')) ? env('LE_SANDBOX') : true;
-        $this->china = (env('LE_CHINA')) ? env('LE_CHINA') : false;
-        $this->key = (env('LE_KEY')) ? env('LE_KEY') : '';
-        $this->secret = (env('LE_SECRET')) ? env('LE_SECRET') : '';
-        $this->callback = (env('LE_CALL_BACK')) ? env('LE_CALL_BACK') : true;
+        $this->sandbox = (env('EVERNOTE_SANDBOX')) ? env('EVERNOTE_SANDBOX') : true;
+        $this->china = (env('EVERNOTE_CHINA')) ? env('EVERNOTE_CHINA') : false;
+        $this->key = (env('EVERNOTE_KEY')) ? env('EVERNOTE_KEY') : '';
+        $this->secret = (env('EVERNOTE_SECRET')) ? env('EVERNOTE_SECRET') : '';
+        $this->callback = (env('EVERNOTE_CALL_BACK')) ? env('EVERNOTE_CALL_BACK') : true;
     }
 
     public function authorize()
@@ -59,6 +59,16 @@ class Evernote
         $thisUrl .= $_SERVER['SCRIPT_NAME'];
         $thisUrl .= $this->callback;
         return $thisUrl;
+    }
+
+    public function notebookList($token)
+    {
+        $client = new \Evernote\Client($token, $this->sandbox, null, null, $this->china);
+
+        $notebooks = array();
+
+        $notebooks = $client->listNotebooks();
+        return $notebooks;
     }
 
 }
