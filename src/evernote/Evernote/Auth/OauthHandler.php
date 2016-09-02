@@ -67,6 +67,7 @@ class OauthHandler
             }
 
             header($authorizationUrl);
+	    exit();
 
         // the user declined the authorization
         } elseif (!array_key_exists('oauth_verifier', $_GET) && array_key_exists('oauth_token', $_GET)) {
