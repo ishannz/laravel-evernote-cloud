@@ -1,5 +1,6 @@
 <?php
 namespace Ishannz\LaravelEvernote;
+use Illuminate\Http\Request;
 
 
 class Evernote
@@ -53,10 +54,11 @@ class Evernote
 
     public function getCallbackUrl()
     {
-        $thisUrl = (empty($_SERVER['HTTPS'])) ? "http://" : "https://";
-        $thisUrl .= $_SERVER['SERVER_NAME'];
-        $thisUrl .= ($_SERVER['SERVER_PORT'] == 80 || $_SERVER['SERVER_PORT'] == 443) ? "" : (":" . $_SERVER['SERVER_PORT']);
-        $thisUrl .= $_SERVER['SCRIPT_NAME'];
+        $request =  new Request();
+        $thisUrl = (empty($request->server('HTTPS'))) ? "http://" : "https://";
+        $thisUrl .= $request->server('SERVER_NAME');
+        $thisUrl .= ($request->server('SERVER_PORT') == 80 || $request->server('SERVER_PORT') == 443) ? "" : (":" . $request->server('SERVER_PORT'));
+        $thisUrl .= $request->server('SCRIPT_NAME');
         $thisUrl .= $this->callback;
         return $thisUrl;
     }

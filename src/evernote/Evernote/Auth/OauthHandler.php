@@ -58,16 +58,18 @@ class OauthHandler
 
             $_SESSION['oauth_token_secret'] = $temporaryCredentials['oauth_token_secret'];;
 
-            $authorizationUrl = 'Location: '
+            /*$authorizationUrl = 'Location: '
                 . $this->getBaseUrl('OAuth.action?oauth_token=')
+                . $temporaryCredentials['oauth_token'];*/
+            $authorizationUrl = $this->getBaseUrl('OAuth.action?oauth_token=')
                 . $temporaryCredentials['oauth_token'];
 
             if ($this->supportLinkedSandbox) {
                 $authorizationUrl .= '&supportLinkedSandbox=true';
             }
-
-            header($authorizationUrl);
-	    exit();
+            redirect($authorizationUrl);
+            //header($authorizationUrl);
+	    //exit();
 
         // the user declined the authorization
         } elseif (!array_key_exists('oauth_verifier', $_GET) && array_key_exists('oauth_token', $_GET)) {
