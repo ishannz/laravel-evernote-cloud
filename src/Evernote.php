@@ -1,6 +1,5 @@
 <?php
 namespace Ishannz\LaravelEvernote;
-use Illuminate\Http\Request;
 
 
 class Evernote
@@ -28,21 +27,21 @@ class Evernote
      */
     public function __construct($token = null)
     {
-        $this->token = $token;
-        $this->sandbox = (env('EVERNOTE_SANDBOX')) ? env('EVERNOTE_SANDBOX') : true;
-        $this->china = (env('EVERNOTE_CHINA')) ? env('EVERNOTE_CHINA') : false;
-        $this->key = (env('EVERNOTE_KEY')) ? env('EVERNOTE_KEY') : '';
-        $this->secret = (env('EVERNOTE_SECRET')) ? env('EVERNOTE_SECRET') : '';
-        $this->callback = (env('EVERNOTE_CALL_BACK')) ? env('EVERNOTE_CALL_BACK') : true;
+        $this->token    = $token;
+        $this->sandbox  = env('EVERNOTE_SANDBOX', true);
+        $this->china    = env('EVERNOTE_CHINA', false);
+        $this->key      = env('EVERNOTE_KEY', '');
+        $this->secret   = env('EVERNOTE_SECRET', '');
+        $this->callback = env('EVERNOTE_CALL_BACK', '');
     }
 
     public function authorize()
     {
         $oauth_handler = new \Evernote\Auth\OauthHandler($this->sandbox, false, $this->china);
         try {
-            $oauth_data = $oauth_handler->authorize($this->key, $this->secret, $this->getCallbackUrl());
+            $oauth_data  = $oauth_handler->authorize($this->key, $this->secret, $this->getCallbackUrl());
             $this->token = $oauth_data['oauth_token'];
-            $ret = $this->token;
+            $ret         = $this->token;
 
         } catch (\Evernote\Exception\AuthorizationDeniedException $e) {
             //If the user decline the authorization, an exception is thrown.
@@ -54,13 +53,7 @@ class Evernote
 
     public function getCallbackUrl()
     {
-        $request =  new Request();
-        $thisUrl = (empty($request->server('HTTPS'))) ? "http://" : "https://";
-        $thisUrl .= $request->server('SERVER_NAME');
-        $thisUrl .= ($request->server('SERVER_PORT') == 80 || $request->server('SERVER_PORT') == 443) ? "" : (":" . $request->server('SERVER_PORT'));
-        $thisUrl .= $request->server('SCRIPT_NAME');
-        $thisUrl .= $this->callback;
-        return $thisUrl;
+        return url($this->callback);
     }
 
     public function notebookList($token)
