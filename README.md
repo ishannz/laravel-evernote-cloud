@@ -68,11 +68,11 @@ for Laravel 5.1+
 You can configure this in your .env file.
 
 ```php 
-	LE_KEY=your evernote key
-	LE_SECRET=your evernotte secrect
-	LE_SANDBOX=true/flase
-	LE_CALL_BACK= call back usel eg: /evernote/callback , ?action=callback
-	LE_CHINA=false
+	EVERNOTE_KEY=your evernote key
+	EVERNOTE_SECRET=your evernote secrect
+	EVERNOTE_SANDBOX=true/false
+	EVERNOTE_CALL_BACK=callback url eg: /evernote/callback , ?action=callback
+	EVERNOTE_CHINA=false
 ```
 
 to receive a token - Authentication
