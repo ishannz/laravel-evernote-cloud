@@ -40,9 +40,13 @@ class Evernote
         $oauth_handler = new \Evernote\Auth\OauthHandler($this->sandbox, false, $this->china);
         try {
             $oauth_data  = $oauth_handler->authorize($this->key, $this->secret, $this->getCallbackUrl());
-            $this->token = $oauth_data['oauth_token'];
-            $ret         = $this->token;
 
+            if (isset($oauth_data['oauth_token'])) {
+                $this->token = $oauth_data['oauth_token'];
+                $ret         = $this->token;
+            } else {
+                $ret = null;
+            }
         } catch (\Evernote\Exception\AuthorizationDeniedException $e) {
             //If the user decline the authorization, an exception is thrown.
             $ret = null;
@@ -60,9 +64,8 @@ class Evernote
     {
         $client = new \Evernote\Client($token, $this->sandbox, null, null, $this->china);
 
-        $notebooks = array();
-
         $notebooks = $client->listNotebooks();
+
         return $notebooks;
     }
 
