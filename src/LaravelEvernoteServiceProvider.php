@@ -14,7 +14,7 @@ class LaravelEvernoteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        require_once __DIR__ . '/evernote/autoload.php';
+        require_once __DIR__ . '/../thirdparty/src/autoload.php';
     }
 
     /**

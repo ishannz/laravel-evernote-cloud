@@ -44,12 +44,11 @@ class OauthHandler
 
         $this->consumer_secret = $consumer_secret;
 
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-
         // first call
         if (!array_key_exists('oauth_verifier', $_GET) && !array_key_exists('oauth_token', $_GET)) {
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
             //session_start();
             unset($this->params['oauth_token']);
             unset($this->params['oauth_verifier']);
@@ -67,7 +66,7 @@ class OauthHandler
                 $authorizationUrl .= '&supportLinkedSandbox=true';
             }
             header($authorizationUrl);
-	    exit();
+	        exit();
 
         // the user declined the authorization
         } elseif (!array_key_exists('oauth_verifier', $_GET) && array_key_exists('oauth_token', $_GET)) {

@@ -1,6 +1,6 @@
 <?php
-namespace Ishannz\LaravelEvernote;
 
+namespace Ishannz\LaravelEvernote;
 
 class Evernote
 {
@@ -35,6 +35,9 @@ class Evernote
         $this->callback = env('EVERNOTE_CALL_BACK', '');
     }
 
+    /**
+     * @return string|null
+     */
     public function authorize()
     {
         $oauth_handler = new \Evernote\Auth\OauthHandler($this->sandbox, false, $this->china);
@@ -50,16 +53,26 @@ class Evernote
         } catch (\Evernote\Exception\AuthorizationDeniedException $e) {
             //If the user decline the authorization, an exception is thrown.
             $ret = null;
+        } catch (\Exception $e) {
+            $ret = null;
         }
 
         return $ret;
     }
 
+    /**
+     * @return string
+     */
     public function getCallbackUrl()
     {
         return url($this->callback);
     }
 
+    /**
+     * @param string $token
+     *
+     * @return array
+     */
     public function notebookList($token)
     {
         $client = new \Evernote\Client($token, $this->sandbox, null, null, $this->china);
@@ -68,5 +81,4 @@ class Evernote
 
         return $notebooks;
     }
-
 }
