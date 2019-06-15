@@ -49,7 +49,7 @@ class OauthHandler
             if (session_status() == PHP_SESSION_NONE) {
                 session_start();
             }
-            //session_start();
+
             unset($this->params['oauth_token']);
             unset($this->params['oauth_verifier']);
 
@@ -73,7 +73,9 @@ class OauthHandler
             throw new AuthorizationDeniedException('Authorization declined.');
         //the user authorized the app
         } else {
-            //session_start();
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
             $this->token_secret = $_SESSION['oauth_token_secret'];
 
             $this->params['oauth_token']    = $_GET['oauth_token'];
