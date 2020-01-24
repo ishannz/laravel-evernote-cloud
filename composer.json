@@ -17,7 +17,7 @@
         },
         "psr-0": {
             "Evernote": "thirdparty/src/", 
-            "Thrift": "thirdparty/src/",
+            "Thrift": "thirdparty/src/"
         },
         "classmap": [
             "thirdparty/src/EDAM"
