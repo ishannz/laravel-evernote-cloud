@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Ishannz\\LaravelEvernote\\": "src/",
+            "Ishannz\\LaravelEvernote\\": "src/"
         },
         "psr-0": {
             "Evernote": "thirdparty/src/", 
