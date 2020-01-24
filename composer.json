@@ -13,9 +13,15 @@
     },
     "autoload": {
         "psr-4": {
-            "Ishannz\\LaravelEvernote\\": "src/",
-            "EDAM\\": "thirdparty/src/"
-        }
+            "Ishannz\\LaravelEvernote\\": "src/"
+        },
+        "psr-0": {
+            "Evernote": "thirdparty/src/", 
+            "Thrift": "thirdparty/src/"
+        },
+        "classmap": [
+            "thirdparty/src/EDAM"
+        ]
     },
     "minimum-stability": "dev"
 }
