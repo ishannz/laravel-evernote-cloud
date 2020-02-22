@@ -8,14 +8,20 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=5.6.0",
         "illuminate/support": "~5.0"
     },
     "autoload": {
         "psr-4": {
-            "Ishannz\\LaravelEvernote\\": "src/",
-            "EDAM\\": "thirdparty/src/"
-        }
+            "Ishannz\\LaravelEvernote\\": "src/"
+        },
+        "psr-0": {
+            "Evernote": "thirdparty/src/", 
+            "Thrift": "thirdparty/src/"
+        },
+        "classmap": [
+            "thirdparty/src/EDAM"
+        ]
     },
     "minimum-stability": "dev"
 }
