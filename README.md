@@ -54,7 +54,7 @@ Publish the config file of the package.
 php artisan vendor:publish --provider="Ishannz\LaravelEvernote\LaravelEvernoteServiceProvider" --tag=config
 ```
 
-for for Laravel 5 use [1.0.0](https://github.com/ishannz/laravel-evernote-cloud/tree/1.0.0)
+For Laravel 5 use [1.0.0](https://github.com/ishannz/laravel-evernote-cloud/tree/1.0.0)
 
 ## Configuration
 
