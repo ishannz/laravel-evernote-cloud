@@ -7,7 +7,7 @@ project's `composer.json`.
 ```json
 {
     "require": {
-        "ishannz/laravel-evernote-cloud": "dev-master"
+        "ishannz/laravel-evernote-cloud": "^2.0"
     },
     "minimum-stability": "dev"
 }
@@ -36,13 +36,6 @@ Find the `providers` key in `config/app.php` and register the Captcha Service Pr
 ```php
     'providers' => [
         // ...
-        'Ishannz\LaravelEvernote\LaravelEvernoteServiceProvider',
-    ]
-```
-for Laravel 5.1+
-```php
-    'providers' => [
-        // ...
         Ishannz\LaravelEvernote\LaravelEvernoteServiceProvider::class,
     ]
 ```
@@ -52,16 +45,16 @@ Find the `aliases` key in `config/app.php`.
 ```php
     'aliases' => [
         // ...
-        'Evernote' => 'Ishannz\LaravelEvernote\Facades\Evernote',
-    ]
-```
-for Laravel 5.1+
-```php
-    'aliases' => [
-        // ...
         'Evernote' => Ishannz\LaravelEvernote\Facades\Evernote::class,
     ]
 ```
+
+Publish the config file of the package.
+```bash
+php artisan vendor:publish --provider="Ishannz\LaravelEvernote\LaravelEvernoteServiceProvider" --tag=config
+```
+
+for for Laravel 5 use [1.0.0](https://github.com/ishannz/laravel-evernote-cloud/tree/1.0.0)
 
 ## Configuration
 

@@ -28,11 +28,11 @@ class Evernote
     public function __construct($token = null)
     {
         $this->token    = $token;
-        $this->sandbox  = env('EVERNOTE_SANDBOX', true);
-        $this->china    = env('EVERNOTE_CHINA', false);
-        $this->key      = env('EVERNOTE_KEY', '');
-        $this->secret   = env('EVERNOTE_SECRET', '');
-        $this->callback = env('EVERNOTE_CALL_BACK', '');
+        $this->sandbox  = config('evernote.sandbox');
+        $this->china    = config('evernote.china');
+        $this->key      = config('evernote.key');
+        $this->secret   = config('evernote.secret');
+        $this->callback = config('evernote.callback');
     }
 
     /**
