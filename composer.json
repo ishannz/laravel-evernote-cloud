@@ -1,6 +1,11 @@
 {
     "name": "ishannz/laravel-evernote-cloud",
     "description": "Laravel wrapper for Evernote Cloud",
+    "license": "MIT",
+    "keywords": [
+        "ishan",
+        "laravel-evernote"
+    ],
     "authors": [
         {
             "name": "ishanjayamanne",
@@ -21,6 +26,13 @@
         "classmap": [
             "thirdparty/src/EDAM"
         ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ishannz\\Evernote\\LaravelEvernoteServiceProvider"
+            ]
+        }
     },
     "minimum-stability": "dev"
 }
