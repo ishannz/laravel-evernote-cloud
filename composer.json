@@ -27,12 +27,5 @@
             "thirdparty/src/EDAM"
         ]
     },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "ishannz\\Evernote\\LaravelEvernoteServiceProvider"
-            ]
-        }
-    },
     "minimum-stability": "dev"
 }
